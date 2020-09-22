@@ -5,13 +5,15 @@ import "./styles.css";
 
 class App extends Component {
   state={
-    color: 'Yellow'
+    color: 'Yellow',
   }
+
   onchangeHandler = e =>{
     this.setState({
       color: e.target.value
     })
   }
+
   render(){
     const stylesObj = {
       background: this.state.color
@@ -21,11 +23,9 @@ class App extends Component {
       style={stylesObj}
 
       className="App">
-    <input type = "text"
-    onChange={this.onchangeHandler}
-    value={this.state.color}
-    ></input>
-
+    <input type = "text" onChange={this.onchangeHandler} value={this.state.color}></input>
+    <br></br>
+    <p> "COLOR IS A POWER WHICH DIRECTLY INFLUENCES THE SOUL."</p>
       </div>
     )
   }
