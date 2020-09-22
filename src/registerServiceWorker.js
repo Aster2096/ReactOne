@@ -1,34 +1,22 @@
-// import React from 'react';
-// import logo from './logo.svg';
-// import './App.css';
-
-// function App() {
-//   return (
-//     <div className="App">
-//       <header className="App-header">
-//         <img src={logo} className="App-logo" alt="logo" />
-//         <p>
-//           Edit <code>src/App.js</code> and save to reload.
-//         </p>
-//         <a
-//           className="App-link"
-//           href="https://reactjs.org"
-//           target="_blank"
-//           rel="noopener noreferrer"
-//         >
-//           Learn React
-//         </a>
-//       </header>
-//     </div>
-//   );
-// }
-
-// export default App;
-
-import React from "react";
+import React, { Component } from "react";
+import ReactDOM from "react-dom";
 import { CompactPicker } from "react-color";
 import "./styles.css";
 import { uniq, concat } from "lodash";
+class App extends Component {
+  state={
+    color: 'Yellow'
+  }
+  onchangeHandler = e =>{
+    this.setState({
+      color: e.target.value
+    })
+  }
+  render(){
+    const stylesObj = {
+      background: this.state.color
+    }
+
 
 const SetOne = [
   "#122882",
@@ -97,9 +85,15 @@ const SetFive = [
 
 const colors = uniq(concat(SetOne, SetTwo, SetThree, SetFour, SetFive));
 
-export default function App() {
   return (
-    <div className="App">
+    <div
+    style={stylesObj}
+
+    className="App">
+  <input type = "text"
+  onChange={this.onchangeHandler}
+  value={this.state.color}
+  ></input>
       <h1>React color picker demo</h1>
       <hr />
       <h4>Compact Picker</h4>
@@ -107,3 +101,7 @@ export default function App() {
     </div>
   );
 }
+}
+
+const rootElement = document.getElementById("root");
+ReactDOM.render(<App />, rootElement);
